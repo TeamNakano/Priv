@@ -23,7 +23,7 @@ if (collaborators.hasOwnProperty(key)) {
 activeCollaborators += collaborators[key] + ', '
 }}
 activeCollaborators = activeCollaborators.slice(0, -2);
-cfonts.say('Bot\nBy Ian', {
+cfonts.say('Bot\nNakano Bot', {
 align: 'center',           
 gradient: ['red', 'blue'] 
 })
@@ -32,7 +32,7 @@ font: 'console',
 align: 'center',
 gradient: ['blue', 'magenta']
 })
-const message = `${subtitleStyle('Desarrollado por »')} ${responseStyle('ianalejandrook15x')}
+const message = `${subtitleStyle('Desarrollado por »')} ${responseStyle('Equipo nakano 2024')}
 ${subtitleStyle('Versión »')} ${responseStyle(version)}`
 console.log(boxen(message, { padding: 1, margin: 1, borderStyle: 'double', borderColor: 'blue', float: 'center', }))
 var isRunning = false
