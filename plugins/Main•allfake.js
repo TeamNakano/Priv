@@ -33,11 +33,11 @@ let user = global.db.data.users[who]
 let pushname = m.pushName || 'Sin nombre'
 
 //creador y otros
-global.creador = 'Wa.me/5493876639332'
+global.creador = 'Wa.me/5493405480284'
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
-global.asistencia = 'https://wa.me/5493876639332'
-global.namechannel = 'Tҽαɱ Cԋαɳɳҽʅ Iαɳ 🌸'
-global.id = "120363268849510279@g.us"
+global.asistencia = 'https://wa.me/5493405480284'
+global.namechannel = 'Feliz navidad'
+global.id = "120363283921434745@newsletter"
 
 //Reacciones De Comandos.!
 global.rwait = '🕒'
@@ -52,15 +52,15 @@ global.emoji4 = '✅'
 global.emojis = [emoji, emoji2, emoji3, emoji4].getRandom()
 
 //mensaje en espera
-global.wait = 'Espere un momento...'
-global.waitt = 'Espere un momento...'
-global.waittt = 'Espere un momento...'
-global.waitttt = 'Espere un momento...'
+global.wait = 'Por favor Espere un momento..'
+global.waitt = 'Por favor Espere un momento..'
+global.waittt = 'por favor Espere un momento..'
+global.waitttt = 'Por favor Espere un momento..'
 
 //Enlaces
-var canal = 'https://whatsapp.com/channel/0029VaQD7LAJP216tu9liI2A'  
-var git = 'https://github.com/ianalejandrook15x'
-var paypal = 'https://paypal.me/kevintomasolazo23'
+var canal = 'https://whatsapp.com/channel/0029VaXDEwlC1FuFm82otA0K'  
+var git = ''
+var paypal = ''
 
 global.redes = [canal, git, paypal].getRandom()
 
@@ -89,13 +89,13 @@ global.readMore = more.repeat(850)
 //Fakes
 global.fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `6285600793871-1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': null, thumbnail: null,sendEphemeral: true}}}
 
-global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363318758721861@newsletter', newsletterName: namechannel, serverMessageId: -1 }
+global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363283921434745@newsletter', newsletterName: namechannel, serverMessageId: -1 }
 }}, { quoted: m }
 
 global.icono = [ 
 'https://qu.ax/kzBBL.png'
 ].getRandom()
 
-global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: "120363318758721861@newsletter", serverMessageId: 100, newsletterName: namechannel, }, externalAdReply: { showAdAttribution: true, title: botname, body: dev, mediaUrl: null, description: null, previewType: "PHOTO", thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false }, }, }}
+global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: "120363283921434745@newsletter", serverMessageId: 100, newsletterName: namechannel, }, externalAdReply: { showAdAttribution: true, title: botname, body: dev, mediaUrl: null, description: null, previewType: "PHOTO", thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false }, }, }}
 
 export default handler
