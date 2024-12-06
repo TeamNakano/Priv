@@ -11,7 +11,7 @@ export async function before(m, {conn, participants, groupMetadata}) {
   let chat = global.db.data.chats[m.chat]
 
  if (chat.welcome && m.messageStubType == 27) {
-    let welcome = ` ✦ ≺ ${botname} \n「 Bienvenido 」\n「 @${m.messageStubParameters[0].split`@`[0]} 」\n「 Bienvenido/a 」\n「 ${groupMetadata.subject} 」\n\n`
+    let welcome = ` ✦ ≺ ${botname} \n> Bienvenido \n「 @${m.messageStubParameters[0].split`@`[0]} 」\n「 Bienvenido/a 」\n「 ${groupMetadata.subject} 」\n\n`
 await conn.sendMini(m.chat, welcome, img, img, redes, fkontak)
   }
 
