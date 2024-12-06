@@ -1,3 +1,4 @@
+/*
 function handler(m) {
   const data = global.owner.filter(([id, isCreator]) => id && isCreator)
   this.sendContact(m.chat, data.map(([id, name]) => [id, name]), estilo, { contextInfo: { externalAdReply: { showAdAttribution: true }}})
@@ -11,6 +12,7 @@ handler.command = ['creador', 'creator', 'owner', 'propietario', 'dueño']
 
 
 export default handler
+
 
 /*import PhoneNumber from 'awesome-phonenumber'
 
@@ -72,3 +74,4 @@ contacts,
 { quoted, 
 ...options
 })}*/
+//
