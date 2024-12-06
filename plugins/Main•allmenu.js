@@ -30,7 +30,7 @@ let tags = {
 }
 
 const defaultMenu = {
-  before: `✦ Mҽɳυ ✦
+  before: `✦ 𝑴𝒆𝒏𝒖 𝑵𝒂𝒌𝒂𝒏𝒐 ✦
 
 ✦ Usuario: \`\`\`%name\`\`\`
 
