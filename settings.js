@@ -18,6 +18,7 @@ global.confirmCode = ''
 
 global.owner = [
    ['5493405480284', 'lobo', true],
+   ['5219981156963', 'Mrsmasturbim', true],
 ]
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
