@@ -44,7 +44,7 @@ let totalreg = Object.keys(global.db.data.users).length
   let old = performance.now()
   let neww = performance.now()
   let speed = neww - old
-  let infobt = ` *I N F O - A K A R I*
+  let infobt = ` *I N F O*
   
 *ESTADO*
 > ✧ Chats de grupo: *${groupsIn.length}*
