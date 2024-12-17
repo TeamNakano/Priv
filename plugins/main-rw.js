@@ -5,7 +5,7 @@ const charactersjson = './scr/JSON/characters.json';
 
 async function loadCharacters() {
     try {
-        const res = await fetch(charactersUrl);
+        const res = await fetch(charactersjson);
         const characters = await res.json();
         return characters;
     } catch (error) {
