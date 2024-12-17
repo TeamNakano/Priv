@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import fetch from 'node-fetch';
 
-const charactersUrl = 'https://raw.githubusercontent.com/ianalejandrook15x/AkariBot-MD/refs/heads/main/personajes.json';
+const charactersjson = './scr/JSON/characters.json';
 
 async function loadCharacters() {
     try {
