@@ -1,11 +1,11 @@
 import { promises as fs } from 'fs';
 import fetch from 'node-fetch';
 
-const charactersjson = './scr/JSON/characters.json';
+const charactersUrl = 'https://raw.githubusercontent.com/ianalejandrook15x/AkariBot-MD/refs/heads/main/personajes.json';
 
 async function loadCharacters() {
     try {
-        const res = await fetch(charactersjson);
+        const res = await fetch(charactersUrl);
         const characters = await res.json();
         return characters;
     } catch (error) {
@@ -19,13 +19,13 @@ let handler = async (m, { conn }) => {
         const randomCharacter = characters[Math.floor(Math.random() * characters.length)];
 
         const message = `
-❀ Nombre*: ${randomCharacter.name}
+❀ *Nombre*: ${randomCharacter.name}
 
-✰*Edad*: ${randomCharacter.age}
+❀ *Edad*: ${randomCharacter.age}
 
-❁*Valor*: ${randomCharacter.value}
+❀ *Valor*: ${randomCharacter.value}
 
-❐*Origen*: ${randomCharacter.source}
+❀ *Origen*: ${randomCharacter.source}
 
 ❀ *Dueño*: 
         `;
