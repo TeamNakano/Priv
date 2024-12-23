@@ -37,7 +37,7 @@ const defaultMenu = {
 \t*𝑪𝑶𝑴𝑨𝑵𝑫𝑶𝑺* 
 `.trimStart(),
     header: '🜲 %category 🜲 \n',
-  body: '᪥ %cmd',
+  body: '> ᪥ %cmd',
   footer: '',
   after: `> ${botname}`,
 }
