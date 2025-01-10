@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn: star, args, text, usedPrefix, command }) => {
-  if (!args[0]) return star.reply(m.chat, '✦ *Ingrese el nombre o enlace de un video de YouTube*', m)
+  if (!args[0]) return star.reply(m.chat, ' *Ingrese el nombre o enlace de un video de YouTube*', m)
   await m.react('🕓')
 
   try {
