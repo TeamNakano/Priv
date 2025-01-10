@@ -267,8 +267,8 @@ let handler = async (msg, { conn, args, usedPrefix, command, isOwner }) => {
               forwardingScore: 999,
               isForwarded: true,
               forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363318758721861@newsletter', 
-                newsletterName: 'ᥴᥲᥒᥲᥣ ძᥱ іᥲᥒᥲᥣᥱȷᥲᥒძr᥆᥆k15᥊', 
+                newsletterJid: '120363283921434745@newsletter', 
+                newsletterName: 'Team Nakano', 
                 serverMessageId: -1
               }
             }
@@ -283,8 +283,8 @@ let handler = async (msg, { conn, args, usedPrefix, command, isOwner }) => {
               forwardingScore: 999,
               isForwarded: true,
               forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363318758721861@newsletter', 
-                newsletterName: 'ᥴᥲᥒᥲᥣ ძᥱ іᥲᥒᥲᥣᥱȷᥲᥒძr᥆᥆k15᥊',
+                newsletterJid: '120363283921434745@newsletter', 
+                newsletterName: 'Team Nakano',
                 serverMessageId: -1
               }
             }
