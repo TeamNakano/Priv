@@ -1,65 +1,99 @@
-import yts from 'yt-search' 
-const handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) throw `Ejemplo: ${usedPrefix + command} diles`,m ,rcanal;
+import fetch from 'node-fetch'
 
-    const randomReduction = Math.floor(Math.random() * 5) + 1;
-    let search = await yts(text);
-    let isVideo = /vid$/.test(command);
-    let urls = search.all[0].url;
-    let body = `\`YouTube Play - ${botname}\`
+let handler = async (m, { conn: star, args, text, usedPrefix, command }) => {
+  if (!args[0]) return star.reply(m.chat, ' *Ingrese el nombre o enlace de un video de YouTube*', m)
+  await m.react('🕓')
 
- ➢   *Título:* ${search.all[0].title}
-     
- ➢   *Vistas:* ${search.all[0].views}
-      
- ➢   *Duración:* ${search.all[0].timestamp}  
-      
- ➢   *Subido:* ${search.all[0].ago} 
-      
- ➢   *Url:* ${urls}
+  try {
+    let query = args.join(' ')
+    let videoInfo
 
-✧ *Su ${isVideo ? 'Video' : 'Audio'} se está enviando, espere un momento...*`;
-    
-    conn.sendMessage(m.chat, { 
-        image: { url: search.all[0].thumbnail }, 
-        caption: body
-    }, { quoted: m,rcanal });
-    m.react('✅')
+    let searchApiResponse = await fetch(`https://restapi.apibotwa.biz.id/api/search-yts?message=${encodeURIComponent(query)}`)
+    let searchResults = await searchApiResponse.json()
 
-    let res = await dl_vid(urls)
-    let type = isVideo ? 'video' : 'audio';
-    let video = res.data.mp4;
-    let audio = res.data.mp3;
-    conn.sendMessage(m.chat, { 
-        [type]: { url: isVideo ? video : audio }, 
-        gifPlayback: false, 
-        mimetype: isVideo ? "video/mp4" : "audio/mpeg" 
-    }, { quoted: m });
-}
-
-handler.command = ['play', 'playvid'];
-handler.help = ['play', 'playvid'];
-handler.tags = ['dl'];
-handler.yenes = 25
-export default handler;
-
-async function dl_vid(url) {
-    const response = await fetch('https://shinoa.us.kg/api/download/ytdl', {
-        method: 'POST',
-        headers: {
-            'accept': '*/*',
-            'api_key': 'free',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            text: url,
-        })
-    });
-
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+    if (!searchResults.status || !searchResults.data || !searchResults.data.response || !searchResults.data.response.video || !searchResults.data.response.video.length) {
+      return star.reply(m.chat, '✦ *No se encontraron resultados para tu búsqueda.*', m).then(_ => m.react('✖️'))
     }
 
-    const data = await response.json();
-    return data;
+    videoInfo = searchResults.data.response.video[0]
+    let url = videoInfo.url
+    let title = videoInfo.title
+    let thumbnail = videoInfo.thumbnail
+    let duration = parseDuration(videoInfo.duration)
+    let views = videoInfo.view
+    let publishedAt = videoInfo.publishedTime
+
+    let downloadApiResponse = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp4?url=${url}`)
+    let downloadInfo = await downloadApiResponse.json()
+
+    if (!downloadInfo.status || !downloadInfo.data || !downloadInfo.data.download || !downloadInfo.data.download.url) {
+      return star.reply(m.chat, '✦ *No se pudo obtener la información del video.*', m).then(_ => m.react('✖️'))
+    }
+
+    let dl_url = downloadInfo.data.download.url
+    let quality = downloadInfo.data.download.quality
+    let filename = downloadInfo.data.download.filename
+
+    let infoMessage = `🎥 *Información del Video* 🎥\n\n`
+    infoMessage += `✦ *Título* : ${title}\n`
+    infoMessage += `✦ *Duración* : ${Math.floor(duration / 60)} minutos\n`
+    infoMessage += `✦ *Vistas* : ${views}\n`
+    infoMessage += `✦ *Publicado* : ${publishedAt}\n`
+
+    await star.sendMessage(m.chat, {
+      image: { url: thumbnail },
+      caption: infoMessage,
+      contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363283921434745@newsletter',
+          newsletterName: 'Team Nakano,
+          serverMessageId: -1
+        }
+      }
+    }, { quoted: m })
+
+    let caption = `*${title}*\n🕒 *Duración* : ${Math.floor(duration / 60)} minutos`
+
+    if (duration > 1800) {
+      await star.sendMessage(m.chat, {
+        document: { url: dl_url },
+        mimetype: 'video/mp4',
+        fileName: filename,
+        caption: caption
+      }, { quoted: m })
+    } else {
+      await star.sendMessage(m.chat, {
+        video: { url: dl_url },
+        caption: caption,
+        contextInfo: {
+          forwardingScore: 999,
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363283921434745@newsletter',
+            newsletterName: 'Team Nakano',
+            serverMessageId: -1
+          }
+        }
+      }, { quoted: m })
+    }
+
+    await m.react('✅')
+  } catch (error) {
+    console.error(error)
+    await m.react('✖️')
+  }
+}
+
+handler.help = ['ytmp4']
+handler.tags = ['Descargas']
+handler.command = ['play']
+handler.register = false
+
+export default handler
+
+function parseDuration(duration) {
+  let parts = duration.split(':').reverse()
+  return parts.reduce((total, part, index) => total + parseInt(part) * Math.pow(60, index), 0)
 }
